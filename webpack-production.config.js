@@ -9,8 +9,8 @@ const webpack = require('webpack');
 module.exports = {
     entry: './src/main.js',
     output: {
-        path: path.resolve(__dirname, 'dist/build'),
-        filename: 'app.bundle.js'
+        path: path.resolve(__dirname, 'dist'),
+        filename: './build/app.bundle.js'
     },
     module: {
         rules: [
@@ -92,7 +92,7 @@ module.exports = {
             },
             template: './src/index.html'
         }),
-        new ExtractTextPlugin('styles.css'),
+        new ExtractTextPlugin('./build/styles.css'),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 // remove warnings
