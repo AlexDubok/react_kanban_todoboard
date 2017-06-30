@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import styles from './WaitingBar.less';
+import PropTypes                from 'prop-types';
+import styles                   from './WaitingBar.less';
 
 class WaitingBar extends PureComponent {
     static propTypes = {
