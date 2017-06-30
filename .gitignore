@@ -1,8 +1,8 @@
-node_modules
-dist/build
 .DS_Store
-npm-debug.log
 .idea
 .history
 .vscode
+node_modules
+npm-debug.log
+dist/build
 etc/config.js
