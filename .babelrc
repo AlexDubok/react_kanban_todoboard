@@ -1,0 +1,23 @@
+{
+    "compact": false,
+    "presets": [
+        [
+            "env",
+            {
+                "targets": {
+                    "browsers": [
+                        "chrome 59"
+                    ],
+                    "uglify": true
+                },
+                // "debug": true,
+                "useBuiltIns": true
+                // "modules": false
+            }
+        ], "stage-2",
+        "react"
+    ],
+    "plugins": [
+        "react-hot-loader/babel", "transform-class-properties"
+    ]
+}

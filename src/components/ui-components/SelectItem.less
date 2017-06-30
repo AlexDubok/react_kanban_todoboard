@@ -1,0 +1,42 @@
+.SelectItem {
+    display: flex;
+    overflow: hidden;
+    height: 40px;
+    pointer-events: none;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-family: 'Roboto-regular';
+    font-size: 13px;
+    &.active {
+        font-family: 'Roboto-medium';
+        font-size: 14px;
+    }
+
+    > div:not(:first-child) {
+        display: flex;
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+    > div:first-child {
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        margin: 0;
+    }
+    .name {
+        width: 170px;
+    }
+}
+
+@media (min-width: 1599px) {
+    .SelectItem {
+        font-size: 18px;
+        &.active {
+            font-size: 20px;
+        }
+    }
+}

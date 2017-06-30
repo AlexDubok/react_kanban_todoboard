@@ -1,0 +1,75 @@
+@import '../../assets/variables.less';
+
+.Switcher {
+    margin-right  : 30px;
+    display : flex;
+    position: relative;
+    align-items: flex-end;
+    .tappableArea {
+        position: relative;
+        top: 10px;
+        left: 0;
+        height  : 37px;
+        padding : 10px;
+        display : flex;
+        margin-right : 10px;
+        align-items: center;
+        cursor: pointer;
+        .switch {
+            position       : relative;
+            display        : inline-block;
+            width          : 17px;
+            height         : 7.3px;
+            pointer-events : none;
+        }
+    }
+    .label {
+        margin-right : 10px;
+        padding: 6px 0;
+        position: relative;
+        top: 6px;
+        font-family: 'Roboto-regular';
+        font-size: 12px;
+        cursor: pointer;
+        color: @gray;
+        transition: color .4s ease;
+    }
+
+
+    /* The slider */
+    .slider {
+        position           : absolute;
+        cursor             : pointer;
+        top                : 0;
+        left               : 0;
+        right              : 0;
+        bottom             : 0;
+        background-color   : @gray-hover;
+        -webkit-transition : .4s;
+        border-radius      : 8px;
+        transition         : .4s;
+        &:before {
+            position           : absolute;
+            border-radius      : 50%;
+            content            : '';
+            height             : 12px;
+            width              : 12px;
+            left               : -6px;
+            bottom             : -2px;
+            background-color   : black;
+            opacity            : 1;
+            -webkit-transition : .4s;
+            transition         : .4s;
+        }
+    }
+
+
+    &:focus .slider {
+        box-shadow : 0 0 1px @gray-hover;
+    }
+
+    &.checked .slider:before {
+        transform        : translateX(17px);
+    }
+}
+

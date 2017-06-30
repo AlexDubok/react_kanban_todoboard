@@ -1,0 +1,75 @@
+@import '../../assets/variables.less';
+
+.TextField {
+    display: flex;
+    align-items: center;
+    flex-shrink : 0;
+    width: 100%;
+    height: 40px;
+    position    : relative;
+    &.active {
+        .underline > div {
+            flex-basis: 100%;
+        }
+    }
+    .label {
+        position: absolute;
+        font-size: 10px;
+        left: 0;
+        bottom: -17px;
+        font-family    : 'Roboto-regular';
+        color          : @gray;
+        pointer-events : none;
+        user-select    : none;
+        transform      : translate(0);
+        transition     : transform .4s cubic-bezier(.28, .87, .3, .93);
+    }
+    .inputText {
+        height:           40px;
+        width:            100%;
+        user-select:      text;
+        border:           none;
+        padding:          0;
+        outline:          0;
+        color:            @primary-color;
+        font-family:      'Roboto-medium';
+        font-size:        14px;
+        background-color: transparent;
+    }
+    .underline {
+        display:         flex;
+        justify-content: center;
+        height:          1px;
+        width:           100%;
+        position:        absolute;
+        top:             39px;
+        left:            0;
+        z-index:         1;
+        background:      @border-color;
+        > div {
+            flex-basis:       0;
+            height:           1px;
+            background-color: @primary-color;
+            transition:       all .4s ease;
+        }
+    }
+    &.invalid {
+        .underline {
+            background : @error;
+        }
+        .label {
+            color : @error;
+        }
+    }
+    .error {
+        padding-top : 3px;
+        color       : @error;
+        font-size   : 12px;
+    }
+}
+
+@media (min-width: 1599px) {
+    .inputText {
+        font-size: 20px !important;
+    }
+}
