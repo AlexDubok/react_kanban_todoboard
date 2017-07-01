@@ -14,9 +14,7 @@ export function loadState() {
 
 export function saveState(store) {
     try {
-        const state = {
-            counter: store.counter
-        };
+        const state = store;
         const serializedData = JSON.stringify(state);
 
         localStorage.setItem(stateID, serializedData);
