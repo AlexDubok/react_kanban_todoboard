@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes                from 'prop-types';
-import Icon                     from '../ui-components/Icon.jsx';
-import ProgressNav              from './ProgressNav.jsx';
+import SearchBar              from './SearchBar.jsx';
 import styles                   from './Header.less';
 
 class Header extends PureComponent {
@@ -16,13 +15,9 @@ class Header extends PureComponent {
         return (
             <div className={styles.Header}>
                 <div className={styles.menu}>
-                    <Icon type='menu' />
+                    KANBAN BOARD
                 </div>
-                <ProgressNav pathname={this.props.location.pathname} />
-                <div className={styles.cta}>
-                    <Icon type='createCustom'  />
-                    <span>Order a custom banner</span>
-                </div>
+                <SearchBar />
                 <div className={styles.version}>
                     Version: {process.env.VERSION}
                 </div>
