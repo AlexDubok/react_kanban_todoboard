@@ -9,20 +9,22 @@ const cx = classnames.bind(styles);
 class TextField extends PureComponent {
     static propTypes = {
         name        : PropTypes.string.isRequired,
-        type        : PropTypes.string.isRequired,
-        defaultValue: PropTypes.string.isRequired,
-        label       : PropTypes.string.isRequired,
         onChange    : PropTypes.func.isRequired,
+        label       : PropTypes.string,
+        defaultValue: PropTypes.string,
+        type        : PropTypes.string,
         errorText   : PropTypes.string,
         style       : PropTypes.object,
         valid       : PropTypes.bool
     };
 
     static defaultProps = {
-        style    : {},
-        valid    : true,
-        errorText: '',
-        type     : 'text'
+        style       : {},
+        valid       : true,
+        errorText   : '',
+        label       : '',
+        defaultValue: '',
+        type        : 'text'
     }
 
     state = {
