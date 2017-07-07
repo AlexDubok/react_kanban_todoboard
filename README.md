@@ -12,7 +12,8 @@ DevChallenge 11 final round task in the category Front-End JS.
 
 ### 1. Launching the project 
 
-1. Open `/dist/index.html`
+1. Clone project
+2. Open `/dist/index.html`
 
 
 ### 2. Development mode
