@@ -1,31 +1,24 @@
+import { CREATE_COLUMN } from '../actions/columns';
 
-const defaultState = {
-    todo : [],
-    doing: [],
-    done : []
-};
+const defaultState = [
+    {
+        id  : 'todo',
+        name: 'todo'
+    },
+    {
+        id  : 'doing',
+        name: 'doing'
+    },
+    {
+        id  : 'done',
+        name: 'done'
+    }
+];
 
 export default function (state = defaultState, action) {
     switch (action.type) {
-        case 'ADD_COLUMN':
-            return { ...state, [action.columnName]: [] };
-        case 'COLUMN_CHANGE_TASK':
-            return {
-                ...state,
-                [action.columnName]: [
-                    ...state[action.columnName],
-                    state[action.columnName].filter(task => task.id !== action.taskId),
-                    action.updatedTask
-                ]
-            };
-        case 'COLUMN_REMOVE_TASK':
-            return {
-                ...state,
-                [action.columnName]: [
-                    ...state[action.columnName],
-                    state[action.columnName].filter(task => task.id !== action.taskId)
-                ]
-            };
+        case CREATE_COLUMN:
+            return [...state, action.column];
         default:
             return state;
     }
