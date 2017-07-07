@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes                from 'prop-types';
 import classnames               from 'classnames/bind';
-import WaitingBar               from '../ui-components/WaitingBar.jsx';
 import Icon                     from './Icon.jsx';
 import styles                   from './Select.less';
 
@@ -11,7 +10,8 @@ class Select extends PureComponent {
     static propTypes = {
         label        : PropTypes.string.isRequired,
         maxHeight    : PropTypes.number,
-        selected     : PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+        selected     : PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+        color        : PropTypes.string,
         width        : PropTypes.number,
         children     : PropTypes.array,
         dropdownWidth: PropTypes.number
@@ -22,6 +22,7 @@ class Select extends PureComponent {
         width        : null,
         selected     : null,
         children     : [],
+        color        : null,
         dropdownWidth: null
     }
 
@@ -51,7 +52,7 @@ class Select extends PureComponent {
     }
 
     render() {
-        const { selected, maxHeight, label, children, dropdownWidth, width } = this.props;
+        const { selected, maxHeight, label, children, dropdownWidth, width, color } = this.props;
         const { isOpen } = this.state;
         const selectStyles = cx('Select', {
             isOpen
@@ -63,10 +64,14 @@ class Select extends PureComponent {
                 onClick={this.handleToggleMenu}
                 ref={c => this.menu = c}
             >
+                <div className={styles.label}>{label}</div>
                 <div className={styles.selected} style={{ width }}>
-                    {
-                        selected ? selected : <WaitingBar />
-                    }
+                    <div className={styles.text}>
+                        {color
+                            ? <div className={styles.color} style={{ background: color }}/>
+                            : null}
+                        {selected}
+                    </div>
                     <Icon type='arrowDown' />
                 </div>
                 <div
@@ -75,9 +80,8 @@ class Select extends PureComponent {
                         width    : dropdownWidth
                     }}
                 >
-                    {children ? children : <WaitingBar />}
+                    {children}
                 </div>
-                <div className={styles.label}>{label}</div>
             </div>
         );
     }

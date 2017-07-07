@@ -1,2 +1,0 @@
-// State mockup
-export default {};

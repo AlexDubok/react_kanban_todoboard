@@ -1,5 +1,5 @@
 {
-  "name": "banner-stack",
+  "name": "kanban_todo",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -13,13 +13,14 @@
   "browserslist": [
     "chrome 59"
   ],
-  "author": "Oleksii Dubok, oleksii.dubok@gmail.com",
+"author": "Oleksii Dubok, oleksii.dubok@gmail.com",
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^7.1.1",
     "babel-polyfill": "^6.23.0",
     "browserslist": "^2.1.5",
     "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1",
     "react": "^15.6.0",
     "react-dom": "^15.6.0",
     "react-modal": "^1.9.4",
@@ -28,6 +29,7 @@
     "react-transition-group": "^1.2.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
+    "uuid": "^3.1.0",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {

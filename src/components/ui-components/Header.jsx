@@ -1,28 +1,30 @@
 import React, { PureComponent } from 'react';
 import PropTypes                from 'prop-types';
-import Icon                     from '../ui-components/Icon.jsx';
-import ProgressNav              from './ProgressNav.jsx';
+import { connect }              from 'react-redux';
+import { searchByName, setEditingStatus }         from '../../actions/view.js';
+import SearchBar                from './SearchBar.jsx';
 import styles                   from './Header.less';
 
 class Header extends PureComponent {
     static propTypes = {
-        location: PropTypes.object.isRequired,
-        history : PropTypes.object.isRequired
+        searchByName    : PropTypes.func.isRequired,
+        location        : PropTypes.object.isRequired,
+        history         : PropTypes.object.isRequired,
+        setEditingStatus: PropTypes.func.isRequired
     };
 
-    handleGoStart = () => this.props.history.push('/');
+    handleSearch = (query) => this.props.searchByName(query);
+
+    handleAddColumn = () => this.props.setEditingStatus('column');
 
     render() {
         return (
             <div className={styles.Header}>
                 <div className={styles.menu}>
-                    <Icon type='menu' />
+                    KANBAN BOARD
                 </div>
-                <ProgressNav pathname={this.props.location.pathname} />
-                <div className={styles.cta}>
-                    <Icon type='createCustom'  />
-                    <span>Order a custom banner</span>
-                </div>
+                <SearchBar onChange={this.handleSearch} />
+                <button onClick={this.handleAddColumn}>Add column</button>
                 <div className={styles.version}>
                     Version: {process.env.VERSION}
                 </div>
@@ -31,4 +33,4 @@ class Header extends PureComponent {
     }
 }
 
-export default Header;
+export default connect(null, { searchByName, setEditingStatus })(Header);

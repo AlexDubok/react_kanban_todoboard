@@ -3,8 +3,8 @@
 .Button {
     height: 36px;
     min-width: 50px;
-    padding: 0 0 0 15px;
-    font-family: 'Roboto-medium';
+    padding: 0 15px;
+    font-family: 'Roboto';
     font-size: 12px;
     display: inline-flex;
     align-items: center;
@@ -35,31 +35,6 @@
         }
         &:active {
             background: @gray-active;
-        }
-    }
-
-    &.btnArrowRight {
-        padding: 0 0 0 15px;
-        i {
-            margin: 0 15px;
-            transition: margin .2s ease;
-        }
-        &:hover, &:active {
-            i {
-                margin: 0 10px 0 20px;
-            }
-        }
-    }
-    &.btnArrowLeft {
-        padding: 0 15px 0 0;
-        i {
-            margin: 0 15px 0 15px;
-            transition: margin .2s ease;
-        }
-        &:hover, &:active {
-            i {
-                margin: 0 20px 0 10px;
-            }
         }
     }
 }

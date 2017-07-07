@@ -15,7 +15,10 @@ export function loadState() {
 export function saveState(store) {
     try {
         const state = {
-            counter: store.counter
+            tasks     : store.tasks,
+            columns   : store.columns,
+            categories: store.categories,
+            archive   : store.archive
         };
         const serializedData = JSON.stringify(state);
 
