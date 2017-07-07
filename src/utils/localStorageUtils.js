@@ -14,7 +14,12 @@ export function loadState() {
 
 export function saveState(store) {
     try {
-        const state = store;
+        const state = {
+            tasks     : store.tasks,
+            columns   : store.columns,
+            categories: store.categories,
+            archive   : store.archive
+        };
         const serializedData = JSON.stringify(state);
 
         localStorage.setItem(stateID, serializedData);
