@@ -15,12 +15,14 @@ class TextField extends PureComponent {
         type        : PropTypes.string,
         errorText   : PropTypes.string,
         style       : PropTypes.object,
-        valid       : PropTypes.bool
+        valid       : PropTypes.bool,
+        multiline   : PropTypes.bool
     };
 
     static defaultProps = {
         style       : {},
         valid       : true,
+        multiline   : false,
         errorText   : '',
         label       : '',
         defaultValue: '',
@@ -28,9 +30,7 @@ class TextField extends PureComponent {
     }
 
     state = {
-        active: false,
-        float : false,
-        height: null
+        active: false
     };
 
     handleFocus = () => this.setState({ active: true });
@@ -43,10 +43,12 @@ class TextField extends PureComponent {
 
 
     render() {
-        const { defaultValue, label, name, type, errorText, style, valid } = this.props;
+        const { defaultValue, label, name, type,
+            errorText, style, valid, multiline } = this.props;
         const { active } = this.state;
         const textClass = cx('TextField', {
             invalid: !valid,
+            multiline,
             active
         });
 
@@ -57,13 +59,22 @@ class TextField extends PureComponent {
                 onFocus={this.handleFocus}
                 onBlur={this.handleBlur}
             >
-                <input
-                    id={name}
-                    type={type}
-                    className={styles.inputText}
-                    defaultValue={defaultValue}
-                    onChange={this.handleChange}
-                />
+                {
+                   multiline
+                        ? <textarea
+                            id={name}
+                            className={styles.textArea}
+                            defaultValue={defaultValue}
+                            onChange={this.handleChange}
+                          />
+                        : <input
+                            id={name}
+                            type={type}
+                            className={styles.inputText}
+                            defaultValue={defaultValue}
+                            onChange={this.handleChange}
+                          />
+               }
                 <label className={styles.label} htmlFor={name}>
                     {valid ? label : errorText}
                 </label>

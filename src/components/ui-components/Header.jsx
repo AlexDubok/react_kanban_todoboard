@@ -1,15 +1,21 @@
 import React, { PureComponent } from 'react';
 import PropTypes                from 'prop-types';
-import SearchBar              from './SearchBar.jsx';
+import { connect }              from 'react-redux';
+import { searchByName, setEditingStatus }         from '../../actions/view.js';
+import SearchBar                from './SearchBar.jsx';
 import styles                   from './Header.less';
 
 class Header extends PureComponent {
     static propTypes = {
-        location: PropTypes.object.isRequired,
-        history : PropTypes.object.isRequired
+        searchByName    : PropTypes.func.isRequired,
+        location        : PropTypes.object.isRequired,
+        history         : PropTypes.object.isRequired,
+        setEditingStatus: PropTypes.func.isRequired
     };
 
-    handleGoStart = () => this.props.history.push('/');
+    handleSearch = (query) => this.props.searchByName(query);
+
+    handleAddColumn = () => this.props.setEditingStatus('column');
 
     render() {
         return (
@@ -17,7 +23,8 @@ class Header extends PureComponent {
                 <div className={styles.menu}>
                     KANBAN BOARD
                 </div>
-                <SearchBar />
+                <SearchBar onChange={this.handleSearch} />
+                <button onClick={this.handleAddColumn}>Add column</button>
                 <div className={styles.version}>
                     Version: {process.env.VERSION}
                 </div>
@@ -26,4 +33,4 @@ class Header extends PureComponent {
     }
 }
 
-export default Header;
+export default connect(null, { searchByName, setEditingStatus })(Header);

@@ -1,19 +1,14 @@
 import React, { PureComponent } from 'react';
-// import PropTypes             from 'prop-types';
-// import classnames               from 'classnames/bind';
+import PropTypes             from 'prop-types';
 import TextField                from '../ui-components/TextField.jsx';
 import styles                   from './SearchBar.less';
 
-// const cx = classnames.bind(styles);
-
 class SearchBar extends PureComponent {
-    // static propTypes = {
-    //     pathname: PropTypes.string.isRequired
-    // }
-
-    handleSearch = (name, value) => {
-        console.log(value);
+    static propTypes = {
+        onChange: PropTypes.func.isRequired
     }
+
+    handleSearch = (name, value) => this.props.onChange(value)
 
     render() {
         return (
